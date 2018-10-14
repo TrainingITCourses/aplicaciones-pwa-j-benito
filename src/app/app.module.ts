@@ -13,6 +13,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { LaunchesEffects } from 'app/reducers/launches';
 import { DataEffects } from 'app/reducers/data';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DataEffects } from 'app/reducers/data';
     FormsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([DataEffects, LaunchesEffects])
+    EffectsModule.forRoot([DataEffects, LaunchesEffects]),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     // service.LaunchesService

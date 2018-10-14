@@ -1,14 +1,7 @@
-npm install @ngrx/store --save
-npm install @ngrx/store-devtools --save
+ng add @angular/pwa
 
-npm install @ngrx/schematics --save-dev
-npm install @angular-devkit/schematics --save-dev
-ng config cli.defaultCollection @ngrx/schematics
+ng build --prod
+npm i -g http-server
 
-cd src/app/reducers/
-ng g st State --root -m app.module.ts --spec false
-ng g r Global --spec false -r index.ts
-ng g a Global --spec false reducers
-
-npm install @ngrx/effects --save
-ng g ef Global --root ‐m ../app.module.ts --spec false
+cd dist/aplicaciones-pwa-j-benito
+http-server -c-1

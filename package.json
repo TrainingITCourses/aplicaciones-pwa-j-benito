@@ -1,10 +1,11 @@
 {
-  "name": "ngrx-j-benito",
+  "name": "aplicaciones-pwa-j-benito",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
+    "http": "http-server -c-1 dist/aplicaciones-pwa-j-benito",
     "test": "ng test --source-map=true",
     "test-coverage": "ng test --watch=false --code-coverage",
     "lint": "ng lint",
@@ -20,7 +21,9 @@
     "@angular/http": "^6.1.0",
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
+    "@angular/pwa": "^0.8.5",
     "@angular/router": "^6.1.0",
+    "@angular/service-worker": "^6.1.0",
     "@ngrx/effects": "^6.1.0",
     "@ngrx/store": "^6.1.0",
     "@ngrx/store-devtools": "^6.1.0",
