@@ -4,6 +4,7 @@
     {
       "name": "app",
       "installMode": "prefetch",
+      "updateMode": "prefetch",
       "resources": {
         "files": [
           "/favicon.ico",
@@ -18,19 +19,36 @@
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/assets/**"
+          "/assets/icons/**"
         ]
       }
     }
   ],
-  "routing": {
-    "index": "/index.html",
-    "routes": {
-      "routes": {
-        "/": {
-          "prefix": true
-        }
+  "dataGroups": [
+    {
+      "name": "cache-first",
+      "urls": [
+        "http://127.0.0.1:8080/assets/launchagencies.json",
+        "http://127.0.0.1:8080/assets/launchmissions.json",
+        "http://127.0.0.1:8080/assets/launchstatus.json"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 10,
+        "maxAge": "1d"
+      }
+    },
+    {
+      "name": "api-first",
+      "urls": [
+        "http://127.0.0.1:8080/assets/launchlibrary.json"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 100,
+        "maxAge": "1h",
+        "timeout": "5s"
       }
     }
-  }
+  ]
 }

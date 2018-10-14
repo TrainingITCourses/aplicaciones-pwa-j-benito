@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build",
+    "prod": "ng build --prod",
     "http": "http-server -c-1 dist/aplicaciones-pwa-j-benito",
     "test": "ng test --source-map=true",
     "test-coverage": "ng test --watch=false --code-coverage",
