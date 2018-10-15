@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from 'app/reducers';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -22,6 +23,7 @@ describe('AppComponent', () => {
         HttpClientModule,
         FormsModule,
         StoreModule.forRoot(reducers, { metaReducers }),
+        ServiceWorkerModule.register('', {enabled: false})
       ]
     }).compileComponents();
   }));
