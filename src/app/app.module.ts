@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-// import * as service from 'app/services';
 import * as component from 'app/components';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
@@ -33,9 +32,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([DataEffects, LaunchesEffects]),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
-  ],
-  providers: [
-    // service.LaunchesService
   ],
   bootstrap: [AppComponent]
 })

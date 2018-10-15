@@ -18,7 +18,8 @@ export class AppComponent {
     if (!this.swUpdate.isEnabled) {
       return;
     }
-    this.swUpdate.available.subscribe(() => {
+    this.swUpdate.available.subscribe(
+      () => {
         const msg = 'Hay una actualización disponible, ¿Actualizar?';
         if (confirm(msg)) {
           window.location.reload();
