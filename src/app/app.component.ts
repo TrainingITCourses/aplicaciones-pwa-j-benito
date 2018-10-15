@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { SwUpdate, UpdateAvailableEvent } from '@angular/service-worker';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -8,20 +8,23 @@ import { SwUpdate, UpdateAvailableEvent } from '@angular/service-worker';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public developerVersion = '4';
-  constructor(swUpdate: SwUpdate) {
-    if (swUpdate.isEnabled) {
-      swUpdate.available.subscribe(
-        (event: UpdateAvailableEvent) => {
-          const msg = 
-            'current: ' +
-            event.current.hash +
-            '. Load new: ' +
-            event.available.hash +
-            ' ?';
-          if (confirm(msg)) { window.location.reload(); }
-        }
-      );
-    }
+  public version = '13';
+
+  constructor(private swUpdate: SwUpdate) {
+    this.observeVersions();
   }
+
+  private observeVersions() {
+    if (!this.swUpdate.isEnabled) {
+      return;
+    }
+    this.swUpdate.available.subscribe(() => {
+        const msg = 'Hay una actualización disponible, ¿Actualizar?';
+        if (confirm(msg)) {
+          window.location.reload();
+        }
+      }
+    );
+  }
+
 }
